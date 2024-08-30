@@ -1,4 +1,4 @@
-package com.jescoding.simpleexpense.ui.theme
+package com.jescoding.simpleexpense.presentation.theme
 
 import android.app.Activity
 import android.os.Build

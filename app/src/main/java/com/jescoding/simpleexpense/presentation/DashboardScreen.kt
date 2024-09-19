@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -54,6 +54,8 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
             ExpenseList()
         }
 
+
+
         FloatingActionButton(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -70,6 +72,8 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
             )
 
         }
+
+
     }
 
 }
@@ -81,7 +85,18 @@ fun ExpenseList() {
             .fillMaxSize()
             .padding(top = 18.dp)
             .background(Color.White)
-    )
+    ) {
+        LazyColumn(modifier = Modifier.padding(top = 44.dp)) {
+            item {
+                ExpenseCard()
+                ExpenseCard()
+                ExpenseCard()
+                ExpenseCard()
+                ExpenseCard()
+                ExpenseCard()
+            }
+        }
+    }
 }
 
 @Composable
@@ -113,9 +128,42 @@ fun SubHeader() {
 }
 
 @Composable
-fun ExpenseCard() {
-    Column {
+fun ExpenseCard(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = 18.dp, end = 18.dp, top = 12.dp)
+            .height(82.dp)
+            .border(BorderStroke(1.dp, Color.Gray))
+    ) {
 
+        Text(
+            modifier = Modifier.padding(top = 14.dp, start = 12.dp, bottom = 12.dp),
+            fontWeight = FontWeight.Bold,
+            text = "July 16, 2024"
+        )
+
+        Row(
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(start = 12.dp, end = 12.dp)
+        ) {
+            Box(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    text = "Cars and Mileage"
+                )
+
+                Text(
+                    modifier = Modifier.align(Alignment.BottomEnd),
+                    text = "P453.32",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+        }
     }
 }
 
